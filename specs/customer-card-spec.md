@@ -17,6 +17,7 @@
   - Yellow (31–70): Moderate health
   - Green (71–100): Good health
 - Basic responsive design for mobile and desktop
+- Customer grid layout: 1 column (mobile), 2 columns (tablet), 4 columns (desktop)
 - Clean, card-based visual design
 
 ### User Interface Requirements
@@ -27,7 +28,8 @@
 
 ### Data Requirements
 - Accepts a customer object via props
-- Customer interface includes: name, email, company, health score, and optional `domains` array of website URLs
+- Customer interface includes: name, optional email, company, health score, and optional `domains` array of website URLs
+- Email is omitted from the card UI when not provided
 - Mock data sourced from `src/data/mock-customers.ts`
 - Supports customers with 1 or multiple domains
 
@@ -47,6 +49,7 @@
 
 ### Design Constraints
 - Responsive breakpoints: mobile (320px+), tablet (768px+), desktop (1024px+)
+- Grid columns: 1 (mobile) → 2 (tablet) → 4 (desktop)
 - Maximum card width: 400px
 - Minimum card height: 120px
 - Spacing uses Tailwind's default scale
@@ -61,7 +64,7 @@
 interface CustomerCardProps {
   customer: {
     name: string;
-    email: string;
+    email?: string;
     company: string;
     healthScore: number;
     domains?: string[];
