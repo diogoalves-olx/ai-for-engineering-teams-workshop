@@ -15,6 +15,7 @@ This directory is where you should save all the specifications created during th
 ## Workshop Exercises
 During the "Thinking in Specs" section, you'll create:
 - CustomerSelector specification (using `@requirements/customer-selector.md`)
+- CustomerCard specification (using `@requirements/customer-card.md`) → `customer-card-spec.md`
 - Additional component specifications as the workshop progresses
 
 ## File Naming Convention
