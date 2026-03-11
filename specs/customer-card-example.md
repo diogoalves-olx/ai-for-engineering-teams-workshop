@@ -1,5 +1,6 @@
 # Feature: CustomerCard Component
 
+
 ## Context
 - Individual customer display component for the Customer Intelligence Dashboard
 - Part of a grid layout showing multiple customers with their health scores
