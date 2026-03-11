@@ -32,15 +32,89 @@ const CustomerCardDemo = () => {
   );
 };
 
-const DashboardWidgetDemo = ({ widgetName, exerciseNumber }: { widgetName: string, exerciseNumber: number }) => {
+const DomainHealthWidget = () => {
+  try {
+    const HealthIndicator = require('../components/HealthIndicator')?.default;
+    const mockCustomers = require('../data/mock-customers')?.mockCustomers;
+    if (HealthIndicator && mockCustomers?.length) {
+      return (
+        <div className="border-2 border-dashed border-gray-200 rounded-lg p-4 text-sm">
+          <p className="font-medium text-gray-700 mb-3">Domain Health Widget</p>
+          <div className="space-y-2">
+            {mockCustomers.slice(0, 4).map((c: { id: string; name: string; healthScore: number; domains?: string[] }) => (
+              <div key={c.id} className="flex items-center justify-between gap-2">
+                <span className="text-gray-600 truncate">{c.domains?.[0] ?? c.name}</span>
+                <HealthIndicator score={c.healthScore} size="sm" showLabel />
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-green-600 mt-3">✅ Exercise 5</p>
+        </div>
+      );
+    }
+  } catch (error) {
+    // Component doesn't exist yet
+  }
   return (
     <div className="border-2 border-dashed border-gray-200 rounded-lg p-4 text-center text-gray-500 text-sm">
-      {widgetName}
+      Domain Health Widget
       <br />
-      <span className="text-xs">Exercise {exerciseNumber}</span>
+      <span className="text-xs">Exercise 5</span>
     </div>
   );
 };
+
+const MarketIntelligenceWidgetDemo = () => {
+  try {
+    const MarketIntelligenceWidget = require('../components/MarketIntelligenceWidget')?.MarketIntelligenceWidget;
+    const mockCustomers = require('../data/mock-customers')?.mockCustomers;
+    if (MarketIntelligenceWidget && mockCustomers?.length) {
+      return (
+        <div className="space-y-1">
+          <p className="text-green-600 text-xs font-medium">✅ Exercise 6</p>
+          <MarketIntelligenceWidget company={mockCustomers[0].company} />
+        </div>
+      );
+    }
+  } catch (error) {
+    // Component doesn't exist yet
+  }
+  return (
+    <div className="border-2 border-dashed border-gray-200 rounded-lg p-4 text-center text-gray-500 text-sm">
+      Market Intelligence
+      <br />
+      <span className="text-xs">Exercise 6</span>
+    </div>
+  );
+};
+
+const PredictiveAlertsDemo = () => {
+  try {
+    const PredictiveIntelligencePanel = require('../components/PredictiveIntelligencePanel')?.PredictiveIntelligencePanel;
+    const mockCustomers = require('../data/mock-customers')?.mockCustomers;
+    if (PredictiveIntelligencePanel && mockCustomers?.length) {
+      return (
+        <div className="space-y-1">
+          <p className="text-green-600 text-xs font-medium">✅ Exercise 8</p>
+          <PredictiveIntelligencePanel
+            customerId={mockCustomers[0].id}
+            company={mockCustomers[0].company}
+          />
+        </div>
+      );
+    }
+  } catch (error) {
+    // Component doesn't exist yet
+  }
+  return (
+    <div className="border-2 border-dashed border-gray-200 rounded-lg p-4 text-center text-gray-500 text-sm">
+      Predictive Alerts
+      <br />
+      <span className="text-xs">Exercise 8</span>
+    </div>
+  );
+};
+
 
 export default function Home() {
   return (
@@ -81,9 +155,9 @@ export default function Home() {
         <section className="bg-white rounded-lg shadow p-6">
           <h3 className="text-lg font-semibold mb-4">Dashboard Widgets</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <DashboardWidgetDemo widgetName="Domain Health Widget" exerciseNumber={5} />
-            <DashboardWidgetDemo widgetName="Market Intelligence" exerciseNumber={6} />
-            <DashboardWidgetDemo widgetName="Predictive Alerts" exerciseNumber={8} />
+            <DomainHealthWidget />
+            <MarketIntelligenceWidgetDemo />
+            <PredictiveAlertsDemo />
           </div>
         </section>
 
